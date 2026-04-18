@@ -22,42 +22,34 @@ bug_to_user_story_v2:
     - Continue na mesma frase com `eu quero...` e `para que...`
     - Depois apresente a seção `Critérios de Aceitação:`
     - Utilize bullets objetivos começando com `- Dado que`, `- Quando`, `- Então` e `- E`
-    - É OBRIGATÓRIO incluir `Contexto Técnico:` sempre que o relato mencionar endpoints, logs, códigos HTTP, numerais, IDs, passos de reprodução, navegadores, plataformas, tempos, valores monetários, stacks ou qualquer detalhe técnico.
-    - Para bugs simples, não adicione seções extras além da User Story e `Critérios de Aceitação`.
 
-       Regras essenciais:
-       - Retorne **somente** a user story final (no formato exigido abaixo).
-       - NÃO inclua explicações meta, justificativas paralelas, comentários editoriais ou texto livre além das seções obrigatórias.
-       - Não adicione suposições ou detalhes que não estejam explícitos no relato; se faltar informação necessária, retorne **EXATAMENTE**: INFORMAÇÃO_INSUFICIENTE
-       - Responda APENAS em Português.
-       - Não deixe linhas em branco no início ou no final da resposta.
-       - Seja direto, conciso e estritamente aderente ao relato do bug.
-       - Preserve verbatim todos os tokens técnicos: numerais, IDs, endpoints, códigos HTTP, nomes de arquivos, nomes de logs, timestamps, valores monetários, porcentagens e termos técnicos exatamente como aparecem no relato (inclua pontuação e maiúsculas).
-       - Se o relato contiver passos ordenados (Steps / Como reproduzir), copie-os verbatim em `Como reproduzir:` mantendo numeração e redação.
-       - Se o relato mencionar efeitos colaterais esperados (ex.: envio de email, webhook POST, alteração de status), inclua esse efeito como um bullet nos `Critérios de Aceitação` com a redação exata.
-       - Formato de saída obrigatório (responda estritamente neste formato):
-             1) Uma única frase inicial com a User Story no formato `Como um..., eu quero..., para que...`.
-             2) Uma linha vazia.
-             3) Cabeçalho `Critérios de Aceitação:` seguido pelos bullets com os prefixos exatos.
-             4) Se aplicável (ver regras acima), incluir `Contexto Técnico:`, `Contexto do Bug:`, `Critérios Técnicos`, `Tasks Técnicas Sugeridas` ou outras seções **na mesma ordem** que aparecem nos exemplos.
-       - Para bugs simples: gere 1 user story + 3 a 5 critérios de aceitação.
-       - PARA BUGS MÉDIOS E COMPLEXOS: se o relato contém múltiplos problemas, logs, endpoints, passos de reprodução ou a palavra-chave `IMPACTO`/`PROBLEMAS`, classifique como COMPLEXO e replique TODAS as seções do exemplo mais próximo, mantendo títulos e redação (incluindo `=== USER STORY PRINCIPAL ===`, `=== CRITÉRIOS TÉCNICOS ===`, `=== CONTEXTO DO BUG ===`, `=== TASKS TÉCNICAS SUGERIDAS ===`, `=== MÉTRICAS DE SUCESSO ===` quando presentes no exemplo).
-    - Se o relato for próximo a um dos exemplos abaixo, replique a estrutura e as seções do exemplo correspondente, sem resumir ou omitir partes.
-    - Não invente critérios, mensagens de erro, tempos, tentativas, logs, edge cases ou quaisquer detalhes técnicos que não estejam no relato.
-    - Sempre preserve números, valores, endpoints, status e termos técnicos exatamente como aparecem.
-    - Não adicione critérios extras apenas por completude — apenas inclua o que o relato exige explícita ou implicitamente.
-    - Se o relato do bug for idêntico ou muito próximo de algum dos exemplos abaixo, replique a mesma estrutura, seções, títulos e redação mais próxima possível do exemplo correspondente.
-    - Nesses casos, não resuma, não remova trechos, não combine seções e não simplifique nada do exemplo.
-    - Não invente critérios, mensagens de erro, textos, tempos, tentativas, logs, edge cases ou detalhes técnicos que não estejam explícitos no relato.
-    - Não adicione critérios extras apenas para deixar mais completo.
-    - Preserve números, valores, endpoints, status e termos técnicos exatamente como aparecem.
-    - Se o bug já traz um comportamento esperado claro, reutilize a formulação.
-    - Se existir regra de cálculo explícita no bug, mantenha-a literalmente.
-    - Para bugs simples, mantenha 1 user story curta e 3 a 5 linhas de critérios de aceitação.
-    - Para bugs médios e complexos, siga todas as seções do exemplo mais próximo, incluindo `Critérios Técnicos`, `Contexto Técnico`, `Critérios de Acessibilidade`, `Critérios de Prevenção`, `Contexto de Segurança`, `Contexto do Bug`, `=== USER STORY PRINCIPAL ===`, `=== CRITÉRIOS TÉCNICOS ===`, `=== CONTEXTO DO BUG ===`, `=== TASKS TÉCNICAS SUGERIDAS ===` e `=== MÉTRICAS DE SUCESSO ===`, quando presentes no exemplo.
-    - Para bugs complexos, só finalize a resposta após a última seção do exemplo. Não termine antes.
-    - Use `Contexto Técnico:` apenas quando houver detalhes técnicos claros (endpoint, log, regra de cálculo, timeout, stack trace, valores etc.).
-    - Utilize `Tasks Técnicas Sugeridas` somente quando o bug for nitidamente complexo e o exemplo equivalente também utilizar essa seção.
+    Regras essenciais e inegociáveis:
+    - Retorne **somente** a user story final no formato exigido. NÃO inclua explicações meta, justificativas ou texto livre.
+    - Responda APENAS em Português e não deixe linhas em branco no início ou final da resposta.
+    - Não adicione suposições que não estejam no relato; se faltar informação vital, retorne EXATAMENTE: INFORMAÇÃO_INSUFICIENTE
+
+    1. PRESERVAÇÃO DE DADOS E ANTI-GENERALIZAÇÃO (CRÍTICO):
+    - É estritamente PROIBIDO generalizar os problemas. Se o relato cita discrepâncias (ex: "Mostra 50 mas tem 42"), comparações de ambiente (ex: "No Chrome funciona, no Safari não") ou IDs específicos (ex: "Produto ID 1234"), você DEVE preservar esses valores literais na User Story, nos Critérios de Aceitação ou na seção `Contexto Técnico`.
+    - Preserve verbatim todos os tokens técnicos: numerais, IDs, endpoints, códigos HTTP, logs, valores monetários e tempos.
+
+    2. USO DA SEÇÃO "CONTEXTO TÉCNICO":
+    - É OBRIGATÓRIO incluir a seção `Contexto Técnico:` sempre que houver qualquer detalhe de endpoint, ID, métrica divergente, nome de navegador, ou passos de reprodução.
+    - Essa regra de `Contexto Técnico` sobrepõe qualquer regra de simplicidade. Mesmo um bug de 1 linha DEVE ter contexto técnico se contiver um ID ou nome de navegador.
+
+    3. ESTRUTURA PARA BUGS SIMPLES VS COMPLEXOS:
+    - Para bugs estritamente visuais ou de interface simples (sem IDs ou endpoints): gere 1 User Story + 3 a 5 Critérios de Aceitação (e Contexto Técnico apenas se houver detalhes descritos na Regra 2).
+    - PARA BUGS MÉDIOS E COMPLEXOS: É PROIBIDO omitir seções secundárias. Se o relato é similar a um exemplo que possui `Critérios de Prevenção`, `Critérios Adicionais`, `Contexto de Segurança` ou `Tasks Técnicas Sugeridas`, você DEVE gerar essas seções exatas, adaptando os dados para o relato atual. Nunca resuma a estrutura de um exemplo.
+
+    4. EFEITOS COLATERAIS:
+    - Se o relato (ou o fluxo de negócio evidente) implicar no disparo de e-mails, logs de auditoria ou webhooks, inclua obrigatoriamente esses efeitos colaterais explícitos nos `Critérios de Aceitação`.
+
+    Formato de saída obrigatório:
+    1) Uma única frase inicial com a User Story no formato `Como um..., eu quero..., para que...`.
+    2) Uma linha vazia.
+    3) Cabeçalho `Critérios de Aceitação:` seguido pelos bullets.
+    4) Se aplicável pelas regras acima, incluir os demais cabeçalhos (`Critérios Adicionais`, `Critérios Técnicos`, `Contexto Técnico`, etc.) na mesma ordem dos exemplos fornecidos.
+
+    Baseie-se rigorosamente nos exemplos abaixo para definir a complexidade e a estrutura da sua resposta.
 
       ## Exemplo 1
 
@@ -73,6 +65,9 @@ bug_to_user_story_v2:
       - Então o item deve ser incluído no carrinho
       - E deve aparecer algum tipo de confirmação visual
       - E o contador do carrinho deve atualizar imediatamente
+
+      Contexto Técnico:
+      - Produto ID 1234
 
 
       ## Exemplo 2
@@ -154,6 +149,10 @@ bug_to_user_story_v2:
       - E o valor deve ser atualizado em tempo real
       - E somente usuários com status "ativo" devem ser contabilizados
 
+      Contexto Técnico:
+      - Métrica exibida: 50
+      - Lista real de usuários ativos: 42
+
       ## Exemplo 6
 
       Relato de Bug:
@@ -168,6 +167,10 @@ bug_to_user_story_v2:
       - Então as imagens devem ser exibidas corretamente
       - E devem manter a mesma qualidade apresentada em outros navegadores
       - E o tempo de carregamento deve ser equivalente
+
+      Contexto Técnico:
+      - Navegador: Safari
+      - Observação: funciona normalmente no Chrome
 
       ## Exemplo 7
 
@@ -223,6 +226,11 @@ bug_to_user_story_v2:
       - Quando realizo GET /api/users/:id de qualquer usuário
       - Então devo receber os dados completos com HTTP 200
       - E o acesso deve ser registrado em log de auditoria
+
+      Contexto Técnico:
+      - Endpoint: GET /api/users/:id
+      - Exemplo: Um usuário comum (ID 100) consegue acessar GET /api/users/1 (admin)
+      - Dados expostos: email, telefone, endereço
 
       Contexto de Segurança:
       - Severidade: ALTA
