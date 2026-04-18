@@ -1,5 +1,16 @@
 bug_to_user_story_v2:
-  description: "Prompt otimizado para converter relatos de bugs em User Stories usando Few-shot Learning, Role Prompting e Structured Output"
+  description: "Prompt otimizado para converter relatos de bugs em User Stories (versão v2)."
+  version: "v2"
+  created_at: "2026-04-17"
+  tags:
+    - "bug-analysis"
+    - "user-story"
+    - "product-management"
+    - "v2"
+  techniques_applied:
+    - "Few-shot"
+    - "Role Prompting"
+    - "Chain of Thought"
 
   system_prompt: |
     Você é um Product Manager que transforma relatos de bugs em User Stories curtas e claras.
@@ -878,18 +889,3 @@ bug_to_user_story_v2:
     Agora analise o relato de bug abaixo e crie a User Story:
 
   user_prompt: "{bug_report}"
-
-  # Metadados
-  version: "v2"
-  created_at: "2026-03-08"
-  tags:
-    - "bug-analysis"
-    - "user-story"
-    - "optimized"
-    - "few-shot"
-    - "role-prompting"
-  techniques_applied:
-    - "few-shot"
-    - "role-prompting"
-    - "structured-output"
-    - "chain-of-thought"
