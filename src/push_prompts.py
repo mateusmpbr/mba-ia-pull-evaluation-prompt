@@ -44,7 +44,6 @@ def push_prompt_to_langsmith(prompt_name: str, prompt_data: dict) -> bool:
         inner = next(iter(prompt_data.values()))
 
     try:
-        # 1. Montagem das Mensagens
         system = inner.get("system_prompt", "")
         user = inner.get("user_prompt", "{bug_report}")
         messages = [("system", system), ("user", user)]
@@ -54,12 +53,11 @@ def push_prompt_to_langsmith(prompt_name: str, prompt_data: dict) -> bool:
         client = Client()
         print(f"Enviando prompt para LangSmith: {prompt_name}")
 
-        # 3. Push com descrição e tags de busca no Hub
         commit = client.push_prompt(
             prompt_identifier=prompt_name,
             object=prompt_obj,
             description=inner.get("description", "Prompt otimizado (v2)"),
-            tags=inner.get("tags", []) # Tags que aparecem na interface do Hub
+            tags=inner.get("tags", [])
         )
 
         print(f"✓ Push realizado. Commit: {commit}")
