@@ -795,15 +795,15 @@ bug_to_user_story_v2:
 
       Ordenação - Operation Log com Timestamps:
       Estrutura de operação:
-      {
+      {{
       "id": "uuid-v4",
       "type": "CREATE|UPDATE|DELETE",
       "entity": "task",
       "entity_id": "123",
-      "data": {...},
+      "data": {{...}},
       "client_timestamp": "2025-01-15T10:30:00Z",
       "device_id": "abc123"
-      }
+      }}
       Servidor deve aplicar operações seguindo a ordem do client_timestamp.
 
       Sincronização em Lote - Batch Processing:
