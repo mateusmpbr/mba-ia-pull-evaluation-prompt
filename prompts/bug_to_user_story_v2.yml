@@ -22,13 +22,30 @@ bug_to_user_story_v2:
     - Continue na mesma frase com `eu quero...` e `para que...`
     - Depois apresente a seção `Critérios de Aceitação:`
     - Utilize bullets objetivos começando com `- Dado que`, `- Quando`, `- Então` e `- E`
-    - Para bugs de complexidade média, é permitido incluir `Contexto Técnico:` quando houver detalhes técnicos explícitos no relato
-    - Para bugs simples, não adicione seções extras
+    - É OBRIGATÓRIO incluir `Contexto Técnico:` sempre que o relato mencionar endpoints, logs, códigos HTTP, numerais, IDs, passos de reprodução, navegadores, plataformas, tempos, valores monetários, stacks ou qualquer detalhe técnico.
+    - Para bugs simples, não adicione seções extras além da User Story e `Critérios de Aceitação`.
 
-    Regras essenciais:
-    - Retorne **somente** a user story final.
-    - Seja direto, conciso e aderente ao relato do bug.
-    - Não se afaste do conteúdo original: evite inventar ou supor detalhes.
+       Regras essenciais:
+       - Retorne **somente** a user story final (no formato exigido abaixo).
+       - NÃO inclua explicações meta, justificativas paralelas, comentários editoriais ou texto livre além das seções obrigatórias.
+       - Não adicione suposições ou detalhes que não estejam explícitos no relato; se faltar informação necessária, retorne **EXATAMENTE**: INFORMAÇÃO_INSUFICIENTE
+       - Responda APENAS em Português.
+       - Não deixe linhas em branco no início ou no final da resposta.
+       - Seja direto, conciso e estritamente aderente ao relato do bug.
+       - Preserve verbatim todos os tokens técnicos: numerais, IDs, endpoints, códigos HTTP, nomes de arquivos, nomes de logs, timestamps, valores monetários, porcentagens e termos técnicos exatamente como aparecem no relato (inclua pontuação e maiúsculas).
+       - Se o relato contiver passos ordenados (Steps / Como reproduzir), copie-os verbatim em `Como reproduzir:` mantendo numeração e redação.
+       - Se o relato mencionar efeitos colaterais esperados (ex.: envio de email, webhook POST, alteração de status), inclua esse efeito como um bullet nos `Critérios de Aceitação` com a redação exata.
+       - Formato de saída obrigatório (responda estritamente neste formato):
+             1) Uma única frase inicial com a User Story no formato `Como um..., eu quero..., para que...`.
+             2) Uma linha vazia.
+             3) Cabeçalho `Critérios de Aceitação:` seguido pelos bullets com os prefixos exatos.
+             4) Se aplicável (ver regras acima), incluir `Contexto Técnico:`, `Contexto do Bug:`, `Critérios Técnicos`, `Tasks Técnicas Sugeridas` ou outras seções **na mesma ordem** que aparecem nos exemplos.
+       - Para bugs simples: gere 1 user story + 3 a 5 critérios de aceitação.
+       - PARA BUGS MÉDIOS E COMPLEXOS: se o relato contém múltiplos problemas, logs, endpoints, passos de reprodução ou a palavra-chave `IMPACTO`/`PROBLEMAS`, classifique como COMPLEXO e replique TODAS as seções do exemplo mais próximo, mantendo títulos e redação (incluindo `=== USER STORY PRINCIPAL ===`, `=== CRITÉRIOS TÉCNICOS ===`, `=== CONTEXTO DO BUG ===`, `=== TASKS TÉCNICAS SUGERIDAS ===`, `=== MÉTRICAS DE SUCESSO ===` quando presentes no exemplo).
+    - Se o relato for próximo a um dos exemplos abaixo, replique a estrutura e as seções do exemplo correspondente, sem resumir ou omitir partes.
+    - Não invente critérios, mensagens de erro, tempos, tentativas, logs, edge cases ou quaisquer detalhes técnicos que não estejam no relato.
+    - Sempre preserve números, valores, endpoints, status e termos técnicos exatamente como aparecem.
+    - Não adicione critérios extras apenas por completude — apenas inclua o que o relato exige explícita ou implicitamente.
     - Se o relato do bug for idêntico ou muito próximo de algum dos exemplos abaixo, replique a mesma estrutura, seções, títulos e redação mais próxima possível do exemplo correspondente.
     - Nesses casos, não resuma, não remova trechos, não combine seções e não simplifique nada do exemplo.
     - Não invente critérios, mensagens de erro, textos, tempos, tentativas, logs, edge cases ou detalhes técnicos que não estejam explícitos no relato.
