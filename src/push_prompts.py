@@ -44,23 +44,34 @@ def push_prompt_to_langsmith(prompt_name: str, prompt_data: dict) -> bool:
         inner = next(iter(prompt_data.values()))
 
     try:
-        if "messages" in inner:
-            messages = [(m["role"], m["content"]) for m in inner["messages"]]
-            prompt_obj = ChatPromptTemplate.from_messages(messages)
-        else:
-            system = inner.get("system_prompt", "")
-            user = inner.get("user_prompt", "{bug_report}")
-            messages = [("system", system), ("user", user)]
-            prompt_obj = ChatPromptTemplate.from_messages(messages)
+        # 1. Montagem das Mensagens
+        system = inner.get("system_prompt", "")
+        user = inner.get("user_prompt", "{bug_report}")
+        messages = [("system", system), ("user", user)]
+        
+        # 2. Criação do Objeto com Metadata
+        # O LangSmith Hub reconhece 'metadata' para organizar versões
+        prompt_obj = ChatPromptTemplate.from_messages(messages)
+        
+        # Adicionamos metadados úteis que estão no seu YAML
+        metadata = {
+            "tags": inner.get("tags", []),
+            "techniques": inner.get("techniques_applied", []),
+            "version": inner.get("version", "v1"),
+            "examples": inner.get("examples", []) # Os exemplos vão aqui
+        }
+        
+        prompt_obj = prompt_obj.with_config({"metadata": metadata})
 
         client = Client()
-        prompt_identifier = prompt_name
+        print(f"Enviando prompt para LangSmith: {prompt_name}")
 
-        print(f"Enviando prompt para LangSmith: {prompt_identifier}")
+        # 3. Push com descrição e tags de busca no Hub
         commit = client.push_prompt(
-            prompt_identifier=prompt_identifier,
+            prompt_identifier=prompt_name,
             object=prompt_obj,
-            description=inner.get("description", "Prompt otimizado (v2)")
+            description=inner.get("description", "Prompt otimizado (v2)"),
+            tags=inner.get("tags", []) # Tags que aparecem na interface do Hub
         )
 
         print(f"✓ Push realizado. Commit: {commit}")
