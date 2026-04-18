@@ -887,4 +887,6 @@ bug_to_user_story_v2:
 
       Agora analise o relato de bug abaixo e crie a User Story:
 
-  user_prompt: "{bug_report}"
+  user_prompt: |
+    Relato de Bug:
+    {bug_report}
