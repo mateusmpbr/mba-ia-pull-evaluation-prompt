@@ -19,27 +19,85 @@ def load_prompts(file_path: str):
 class TestPrompts:
     def test_prompt_has_system_prompt(self):
         """Verifica se o campo 'system_prompt' existe e não está vazio."""
-        pass
+        prompts = load_prompts("prompts/bug_to_user_story_v2.yml")
+        if not prompts:
+            pytest.skip("Arquivo prompts/bug_to_user_story_v2.yml não encontrado")
+
+        key = next(iter(prompts.keys()))
+        prompt = prompts[key]
+
+        assert 'system_prompt' in prompt
+        assert isinstance(prompt['system_prompt'], str)
+        assert prompt['system_prompt'].strip() != ''
 
     def test_prompt_has_role_definition(self):
         """Verifica se o prompt define uma persona (ex: "Você é um Product Manager")."""
-        pass
+        prompts = load_prompts("prompts/bug_to_user_story_v2.yml")
+        if not prompts:
+            pytest.skip("Arquivo prompts/bug_to_user_story_v2.yml não encontrado")
+
+        key = next(iter(prompts.keys()))
+        prompt = prompts[key]
+
+        system = prompt.get('system_prompt', '') or ''
+        system_l = system.lower()
+
+        assert ('você' in system_l) or ('you are' in system_l) or ('product manager' in system_l)
 
     def test_prompt_mentions_format(self):
         """Verifica se o prompt exige formato Markdown ou User Story padrão."""
-        pass
+        prompts = load_prompts("prompts/bug_to_user_story_v2.yml")
+        if not prompts:
+            pytest.skip("Arquivo prompts/bug_to_user_story_v2.yml não encontrado")
+
+        key = next(iter(prompts.keys()))
+        prompt = prompts[key]
+
+        text = (prompt.get('system_prompt', '') + ' ' + prompt.get('user_prompt', '')).lower()
+
+        assert ('markdown' in text) or ('user story' in text) or ('user-story' in text)
 
     def test_prompt_has_few_shot_examples(self):
         """Verifica se o prompt contém exemplos de entrada/saída (técnica Few-shot)."""
-        pass
+        prompts = load_prompts("prompts/bug_to_user_story_v2.yml")
+        if not prompts:
+            pytest.skip("Arquivo prompts/bug_to_user_story_v2.yml não encontrado")
+
+        key = next(iter(prompts.keys()))
+        prompt = prompts[key]
+
+        examples = prompt.get('examples')
+        assert examples is not None and isinstance(examples, list) and len(examples) >= 1
+
+        # Cada exemplo deve conter input e output não vazios
+        for ex in examples:
+            assert 'input' in ex and ex['input'].strip() != ''
+            assert 'output' in ex and ex['output'].strip() != ''
 
     def test_prompt_no_todos(self):
         """Garante que você não esqueceu nenhum `[TODO]` no texto."""
-        pass
+        prompts = load_prompts("prompts/bug_to_user_story_v2.yml")
+        if not prompts:
+            pytest.skip("Arquivo prompts/bug_to_user_story_v2.yml não encontrado")
+
+        key = next(iter(prompts.keys()))
+        prompt = prompts[key]
+
+        combined = yaml.dump(prompt).upper()
+        assert 'TODO' not in combined
 
     def test_minimum_techniques(self):
         """Verifica (através dos metadados do yaml) se pelo menos 2 técnicas foram listadas."""
-        pass
+        prompts = load_prompts("prompts/bug_to_user_story_v2.yml")
+        if not prompts:
+            pytest.skip("Arquivo prompts/bug_to_user_story_v2.yml não encontrado")
+
+        key = next(iter(prompts.keys()))
+        prompt = prompts[key]
+
+        techniques = prompt.get('techniques_applied', [])
+        assert isinstance(techniques, list)
+        assert len(techniques) >= 2
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])
