@@ -19,23 +19,20 @@ bug_to_user_story_v2:
     Regras principais (sempre):
     - Persona/estilo: escreva como PM técnico: conciso, orientado a valor, com linguagem testável.
     - Formato obrigatório de saída:
-      Título: frase curta (máx 8 palavras)
-      Descrição: "Como <persona>, eu quero <ação>, para <benefício>."
+      "Como <persona>, eu quero <ação>, para <benefício>."
       Critérios de Aceitação: lista com passos no estilo Given/When/Then (cada item numa linha começando com "- ")
-      Metadados: Domínio, Tipo, Complexidade e contexto técnico relevante.
     - Priorize especificidade: inclua plataforma afetada, IDs relevantes, endpoints, códigos de erro, passos de reprodução e evidências de logs quando presentes no relato.
     - Para bugs complexos (complex/critical/medium): anteponha uma seção "Análise (resumo conciso)" com até 3 bullets apontando causas prováveis, componentes afetados e próximos passos de investigação. Seja sintético — NÃO exponha raciocínio interno detalhado (evite CoT verboso), apenas um resumo diagnóstico.
     - Use os exemplos abaixo (FEW-SHOT) como referência estrita de estilo, conteúdo e granularidade.
-    - Saída final: somente a User Story no formato indicado (Título, Descrição, Critérios de Aceitação, Informações complementares). Não acrescente comentários, brainstorm ou instruções de implementação.
+    - Saída final: somente a User Story no formato indicado (Descrição, Critérios de Aceitação). Não acrescente comentários, brainstorm ou instruções de implementação.
 
     FEW-SHOT EXEMPLES
 
-    EXEMPLO 1
-
-    Bug relatado:
+    ### EXEMPLO 1 ###
+    ## BUG RELATADO ##
     Botão de adicionar ao carrinho não funciona no produto ID 1234.
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um cliente navegando na loja, eu quero adicionar produtos ao meu carrinho de compras, para que eu possa continuar comprando e finalizar minha compra depois.
 
     Critérios de Aceitação:
@@ -45,15 +42,11 @@ bug_to_user_story_v2:
     - E devo ver uma confirmação visual
     - E o contador do carrinho deve ser atualizado
 
-    Metadados:
-    Domínio: e-commerce, Tipo: UI/UX, Complexidade: simple
-
-    EXEMPLO 2
-
-    Bug relatado:
+    ### EXEMPLO 2 ###
+    ## BUG RELATADO ##
     Campo de email aceita texto sem @, permitindo cadastros inválidos.
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um usuário criando uma conta, eu quero que o sistema valide meu email corretamente, para que eu não insira um endereço inválido por engano.
 
     Critérios de Aceitação:
@@ -63,15 +56,11 @@ bug_to_user_story_v2:
     - E não devo conseguir prosseguir com o cadastro
     - E a mensagem deve explicar o formato correto
 
-    Metadados:
-    Domínio: saas, Tipo: validation, Complexidade: simple
-
-    EXEMPLO 3
-
-    Bug relatado:
+    ### EXEMPLO 3 ###
+    ## BUG RELATADO ##
     No iOS, ao girar o celular para landscape, o layout da tela de perfil fica quebrado.
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um usuário de iOS, eu quero visualizar minha tela de perfil em modo paisagem, para que eu possa usar o app em qualquer orientação sem problemas visuais.
 
     Critérios de Aceitação:
@@ -81,15 +70,11 @@ bug_to_user_story_v2:
     - E todos os elementos devem permanecer visíveis e alinhados
     - E não deve haver sobreposição de componentes
 
-    Metadados:
-    Domínio: mobile, Tipo: UI/UX, Complexidade: simple
-
-    EXEMPLO 4
-
-    Bug relatado:
+    ### EXEMPLO 4 ###
+    ## BUG RELATADO ##
     Dashboard mostra contagem errada de usuários ativos. Mostra 50 mas só há 42 na lista.
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um administrador visualizando o dashboard, eu quero ver a contagem correta de usuários ativos, para que eu possa tomar decisões baseadas em dados precisos.
 
     Critérios de Aceitação:
@@ -99,15 +84,11 @@ bug_to_user_story_v2:
     - E o valor deve ser atualizado em tempo real
     - E deve incluir apenas usuários com status "ativo"
 
-    Metadados:
-    Domínio: saas, Tipo: business_logic, Complexidade: simple
-
-    EXEMPLO 5
-
-    Bug relatado:
+    ### EXEMPLO 5 ###
+    ## BUG RELATADO ##
     Imagens de produtos não aparecem no Safari. No Chrome funciona normal.
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um cliente usando Safari, eu quero visualizar as imagens dos produtos, para que eu possa avaliar os itens antes de comprar.
 
     Critérios de Aceitação:
@@ -117,12 +98,8 @@ bug_to_user_story_v2:
     - E devem ter a mesma qualidade que em outros navegadores
     - E o tempo de carregamento deve ser similar
 
-    Metadados:
-    Domínio: e-commerce, Tipo: UI/UX, Complexidade: simple
-
-    EXEMPLO 6
-
-    Bug relatado:
+    ### EXEMPLO 6 ###
+    ## BUG RELATADO ##
     Webhook de pagamento aprovado não está sendo chamado.
 
     Steps to reproduce:
@@ -134,7 +111,7 @@ bug_to_user_story_v2:
 
     Logs do gateway mostram: HTTP 500 ao tentar POST /api/webhooks/payment
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como o sistema de e-commerce, eu quero receber notificações de pagamento aprovado via webhook, para que o status dos pedidos seja atualizado automaticamente após confirmação do pagamento.
 
     Critérios de Aceitação:
@@ -150,12 +127,8 @@ bug_to_user_story_v2:
     - Gateway: [nome do gateway de pagamento]
     - Logs indicam falha no processamento do webhook
 
-    Metadados:
-    Domínio: saas, Tipo: integration, Complexidade: medium
-
-    EXEMPLO 7
-
-    Bug relatado:
+    ### EXEMPLO 7 ###
+    ## BUG RELATADO ##
     Relatório de vendas demora mais de 2 minutos para gerar quando filtro ultrapassa 1000 registros.
 
     Detalhes:
@@ -163,7 +136,7 @@ bug_to_user_story_v2:
     - Timeout do navegador após 120 segundos
     - Usuários reclamando de lentidão no horário comercial
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um gerente de vendas, eu quero gerar relatórios de vendas rapidamente mesmo com grandes volumes de dados, para que eu possa analisar informações sem esperar longos períodos.
 
     Critérios de Aceitação:
@@ -179,12 +152,8 @@ bug_to_user_story_v2:
     - Performance esperada: <30s para qualquer volume
     - Sugestão: adicionar índice e otimizar query SQL
 
-    Metadados:
-    Domínio: erp, Tipo: performance, Complexidade: medium
-
-    EXEMPLO 8
-
-    Bug relatado:
+    ### EXEMPLO 8 ###
+    ## BUG RELATADO ##
     Endpoint /api/users/:id retorna dados de qualquer usuário sem validar permissões.
 
     Exemplo:
@@ -194,7 +163,7 @@ bug_to_user_story_v2:
 
     Severidade: ALTA - vazamento de dados pessoais
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como o sistema, eu quero validar permissões antes de retornar dados de usuários, para que apenas usuários autorizados possam acessar informações pessoais de outros usuários.
 
     Critérios de Aceitação:
@@ -216,12 +185,8 @@ bug_to_user_story_v2:
     - Dados expostos: email, telefone, endereço
     - Ação: Implementar middleware de autorização
 
-    Metadados:
-    Domínio: saas, Tipo: security, Complexidade: medium
-
-    EXEMPLO 9
-
-    Bug relatado:
+    ### EXEMPLO 9 ###
+    ## BUG RELATADO ##
     Pipeline de vendas calcula valor total errado quando há desconto.
 
     Cenário:
@@ -233,7 +198,7 @@ bug_to_user_story_v2:
 
     O sistema aplica desconto só no primeiro produto.
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um vendedor gerenciando oportunidades no pipeline, eu quero que o valor total seja calculado corretamente quando aplico descontos, para que eu possa apresentar propostas precisas aos clientes.
 
     Critérios de Aceitação:
@@ -254,12 +219,8 @@ bug_to_user_story_v2:
     - Bug atual: desconto sendo aplicado apenas no primeiro produto
     - Resultado incorreto: R$ 1.400 (deveria ser R$ 1.350)
 
-    Metadados:
-    Domínio: crm, Tipo: business_logic, Complexidade: medium
-
-    EXEMPLO 10
-
-    Bug relatado:
+    ### EXEMPLO 10 ###
+    ## BUG RELATADO ##
     App Android trava ao carregar lista de notificações com mais de 50 itens.
 
     Observações:
@@ -268,7 +229,7 @@ bug_to_user_story_v2:
     - Lista não está usando paginação
     - Carrega tudo de uma vez na Thread principal
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um usuário do app Android, eu quero visualizar minhas notificações rapidamente sem travamentos, para que eu possa acessar informações importantes sem frustrações.
 
     Critérios de Aceitação:
@@ -289,12 +250,8 @@ bug_to_user_story_v2:
     - Sintoma: ANR após 50+ itens
     - Tempo de tela congelada: 5-10 segundos
 
-    Metadados:
-    Domínio: mobile, Tipo: performance, Complexidade: medium
-
-    EXEMPLO 11
-
-    Bug relatado:
+    ### EXEMPLO 11 ###
+    ## BUG RELATADO ##
     Carrinho permite finalizar compra mesmo com produto fora de estoque.
 
     Fluxo do bug:
@@ -305,7 +262,7 @@ bug_to_user_story_v2:
     5. Cliente B finaliza compra
     6. Sistema gera pedido mas não tem estoque para enviar
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como o sistema de e-commerce, eu quero validar disponibilidade de estoque antes de permitir finalização de compra, para que não sejam criados pedidos que não podem ser atendidos.
 
     Critérios de Aceitação:
@@ -327,12 +284,8 @@ bug_to_user_story_v2:
     - Impacto: pedidos criados sem possibilidade de atendimento
     - Cenário crítico: múltiplos clientes comprando último item
 
-    Metadados:
-    Domínio: e-commerce, Tipo: business_logic, Complexidade: medium
-
-    EXEMPLO 12
-
-    Bug relatado:
+    ### EXEMPLO 12 ###
+    ## BUG RELATADO ##
     Modal de confirmação de exclusão aparece atrás do menu lateral em telas pequenas (< 768px).
 
     Detalhes:
@@ -341,7 +294,7 @@ bug_to_user_story_v2:
     - Usuários não conseguem clicar nos botões do modal
     - Precisam fechar o menu lateral antes
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um usuário em dispositivo móvel, eu quero que modais importantes apareçam acima de todos os outros elementos, para que eu possa interagir com eles sem precisar fechar outros componentes.
 
     Critérios de Aceitação:
@@ -362,12 +315,8 @@ bug_to_user_story_v2:
     - Solução: ajustar z-index do modal para > 1050
     - Devices afetados: mobile e tablets (< 768px)
 
-    Metadados:
-    Domínio: saas, Tipo: UI/UX, Complexidade: medium
-
-    EXEMPLO 13
-
-    Bug relatado:
+    ### EXEMPLO 13 ###
+    ## BUG RELATADO ##
     Sistema de checkout com múltiplas falhas críticas.
 
     PROBLEMAS IDENTIFICADOS:
@@ -398,7 +347,7 @@ bug_to_user_story_v2:
     - 45 tickets de suporte abertos
     - Rating do app caiu de 4.5 para 3.2 estrelas
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um cliente finalizando minha compra, eu quero um processo de checkout seguro, confiável e com feedback claro, para que eu possa completar minhas compras sem preocupações ou frustrações.
 
     === USER STORY PRINCIPAL ===
@@ -469,12 +418,8 @@ bug_to_user_story_v2:
     Severidade: CRÍTICA
     Impacto: 150+ clientes, R$ 15.000 em perdas, rating caiu de 4.5→3.2
 
-    Metadados:
-    Domínio: e-commerce, Tipo: multiple (security, integration, business_logic, UX), Complexidade: complex, severity: critical
-
-    EXEMPLO 14
-
-    Bug relatado:
+    ### EXEMPLO 14 ###
+    ## BUG RELATADO ##
     Sistema de relatórios gerenciais com problemas severos de performance e dados incorretos.
 
     CONTEXTO:
@@ -500,7 +445,7 @@ bug_to_user_story_v2:
     - CEO não confia nos números para apresentar ao board
     - Time de CS gastando 40h/semana explicando discrepâncias
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um executivo usando o sistema de relatórios, eu quero visualizar métricas precisas e atualizadas em tempo hábil, para que eu possa tomar decisões estratégicas baseadas em dados confiáveis.
 
     === USER STORY PRINCIPAL ===
@@ -522,12 +467,8 @@ bug_to_user_story_v2:
     - Implementar estratégia de cache híbrida (dados críticos <5min)
     - Exportar CSV via job assíncrono e streaming
 
-    Metadados:
-    Domínio: saas, Type: multiple (performance, business_logic, cache, concurrency), Complexidade: complex, severity: critical
-
-    EXEMPLO 15
-
-    Bug relatado:
+    ### EXEMPLO 15 ###
+    ## BUG RELATADO ##
     App de produtividade offline-first com bugs críticos de sincronização.
 
     CONTEXTO:
@@ -540,7 +481,7 @@ bug_to_user_story_v2:
     3. ORDENAÇÃO - Operações aplicadas fora de ordem no servidor
     4. MEMÓRIA - App crasha ao sincronizar 1000+ itens pendentes
 
-    User story esperada:
+    ## USER STORY ESPERADA ##
     Como um vendedor usando o app em campo, eu quero que minhas alterações offline sejam sincronizadas de forma confiável sem perda de dados, para que eu possa trabalhar com tranquilidade mesmo em áreas sem conexão.
 
     === CRITÉRIOS DE ACEITAÇÃO (resumo) ===
@@ -555,18 +496,13 @@ bug_to_user_story_v2:
     - Operation log com client_timestamp; servidor aplica por timestamp
     - Batch processing e streaming para evitar carregar tudo na memória
 
-    Metadados:
-    Domínio: mobile + backend, Type: multiple (sync, conflict resolution, upload, memory), Complexidade: complex, severity: critical
-
     ---
     TEMPLATE PARA RESPONDER (DEVE SER SEGURO E PRECISO):
-    - Título: <frase curta>
-    - Descrição: Como <persona>, eu quero <ação>, para <benefício>.
+    - Como <persona>, eu quero <ação>, para <benefício>.
     - Critérios de Aceitação:
       - Dado que ...
       - Quando ...
       - Então ...
-    - Metadados: Domínio: ..., Tipo: ..., Complexidade: ...
 
     Quando receber um novo relato de bug (substituir {bug_report}), gere apenas a User Story seguindo o template acima.
   user_prompt: "{bug_report}"
