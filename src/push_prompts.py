@@ -49,19 +49,7 @@ def push_prompt_to_langsmith(prompt_name: str, prompt_data: dict) -> bool:
         user = inner.get("user_prompt", "{bug_report}")
         messages = [("system", system), ("user", user)]
         
-        # 2. Criação do Objeto com Metadata
-        # O LangSmith Hub reconhece 'metadata' para organizar versões
         prompt_obj = ChatPromptTemplate.from_messages(messages)
-        
-        # Adicionamos metadados úteis que estão no seu YAML
-        metadata = {
-            "tags": inner.get("tags", []),
-            "techniques": inner.get("techniques_applied", []),
-            "version": inner.get("version", "v1"),
-            "examples": inner.get("examples", []) # Os exemplos vão aqui
-        }
-        
-        prompt_obj = prompt_obj.with_config({"metadata": metadata})
 
         client = Client()
         print(f"Enviando prompt para LangSmith: {prompt_name}")
