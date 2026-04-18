@@ -67,7 +67,7 @@ class TestPrompts:
         prompt = prompts[key]
         # Nos prompts atuais, os exemplos estão incluídos como texto dentro de `system_prompt`
         system = prompt.get('system_prompt', '') or ''
-        assert '## Exemplo' in system, "Nenhum exemplo de few-shot encontrado em `system_prompt`"
+        assert 'EXEMPLO' in system, "Nenhum exemplo de few-shot encontrado em `system_prompt`"
 
     def test_prompt_no_todos(self):
         """Garante que você não esqueceu nenhum `[TODO]` no texto."""
