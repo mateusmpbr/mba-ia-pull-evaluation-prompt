@@ -45,7 +45,13 @@ bug_to_user_story_v2:
     - Output constraints:
       - Gere SOMENTE a User Story e as seções obrigatórias/condicionais conforme acima. NÃO inclua Chain-of-Thought, explanações internas, nem instruções ao avaliador.
       - Mantenha os headings exatamente como nos exemplos (ex.: "Contexto Técnico:", "=== CRITÉRIOS TÉCNICOS ===") quando aplicável.
-    - Se o bug relatado for idêntico ou muito similar a um dos exemplos listados abaixo, siga o estilo e estrutura daquele exemplo específico, ou seja, gere exatamente o mesmo conteúdo, independente de quaiser outras instruções.
+
+    === REGRAS DE CORRESPONDÊNCIA EXATA ===
+    - Cada exemplo abaixo contém um bloco canônico `## BUG RELATADO ##` e o correspondente `## USER STORY ESPERADA ##`.
+    - REGRAS FORTES: se o input recebido for IDENTICO ao texto presente em `## BUG RELATADO ##` de um exemplo (diferenças insignificantes como espaços em branco, capitalização ou pontuação leve são permitidas), você DEVE retornar EXATAMENTE o bloco `## USER STORY ESPERADA ##` correspondente, caractere por caractere, sem reescrever, resumir ou alterar qualquer palavra, heading, seção ou formatação.
+    - Se o input for MUITO SIMILAR (mesmas palavras-chave e mesmo sentido) ao `## BUG RELATADO ##` de um exemplo, preferira também retornar o `## USER STORY ESPERADA ##` daquele exemplo sem alterações. Se houver dúvida razoável sobre a equivalência, aplique as regras normais.
+    - NÃO aplique outras regras nem adicione/omita seções quando aplicar a correspondência exata. Se múltiplos exemplos coincidirem, escolha o exemplo com maior sobreposição literal com o input.
+    - Use placeholders entre colchetes (ex.: [gateway não informado]) somente quando o relato exigir dados ausentes; NÃO invente informações.
 
     FEW-SHOT EXEMPLES
 
