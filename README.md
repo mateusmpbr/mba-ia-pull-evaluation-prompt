@@ -11,3 +11,19 @@
 - **Chain of Thought**
   - **Justificativa para escolha**: essa técnica melhora o raciocínio e aumenta a precisão, incentivando o modelo a pensar de forma estruturada, “passo a passo”.
   - **Como foi aplicada**: instruí o modelo a explicitar seu raciocínio quando necessário, seguindo a lógica do Chain of Thought para chegar a respostas mais consistentes.
+
+# Modelos de IA utilizados
+
+- **LLM_PROVIDER**=google
+- **LLM_MODEL**=gemini-2.5-flash-lite
+- **EVAL_MODEL**=gemini-2.5-flash-lite
+
+# Resultados Finais
+
+- **Prompt no LangSmith**: https://smith.langchain.com/hub/mateusmpbr/bug_to_user_story_v2
+
+- **Estatísticas no LangSmith**:
+- ![Foto das estatísticas no LangSmith](static/langsmith-stats.png)
+
+- **Resultado das avaliações**:
+- ![Foto do resultado das avaliações](static/evaluations-result.png)
