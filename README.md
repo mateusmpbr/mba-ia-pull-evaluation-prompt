@@ -25,5 +25,76 @@
 - **Estatísticas no LangSmith**:
 - ![Foto das estatísticas no LangSmith](static/langsmith-stats.png)
 
+- **Alguns traces no LangSmith**:
+- ![Foto de alguns traces no LangSmith](static/langsmith-some-traces.png)
+
 - **Resultado das avaliações**:
 - ![Foto do resultado das avaliações](static/evaluations-result.png)
+
+# Como Executar
+
+## Pré-requisitos
+
+- Linux
+- Python 3.11 (se o binário for diferente ajuste `./setup.sh`, por exemplo `python3` ou `python3.12`, só é necessário ser >= 3.11)
+
+## Passos de instalação e execução
+
+### 1. Preparar o ambiente e dependências
+
+```bash
+./setup.sh
+```
+
+O script `setup.sh` copia `.env.example` para `.env`, cria um `venv` em `./venv` e instala dependências.
+
+### 2. Preencher o arquivo `.env`
+
+Após o `setup.sh` será gerado o arquivo `.env`. Preencha com os dados necessários, e escolha entre usar os modelos da Open AI ou do Google.
+
+### 3. Ativar o ambiente virtual
+
+```bash
+source venv/bin/activate
+```
+
+### 4. Fazer pull do prompt inicial
+
+```bash
+python src/pull_prompts.py
+```
+
+### 5. Fazer push do prompt aprimorado
+
+```bash
+python src/push_prompts.py
+```
+
+### 6. Rodar avaliação para prompt aprimorado
+
+```bash
+python src/evaluate.py
+```
+
+## Execução rápida (resumo dos comandos)
+
+```bash
+./setup.sh
+# editar .env (preencher OPENAI_API_KEY ou GOOGLE_API_KEY e outros dados necessários)
+source venv/bin/activate
+python src/pull_prompts.py
+python src/push_prompts.py
+python src/evaluate.py
+```
+
+## Instruções do desafio
+
+As instruções do desafio estão em `INSTRUCTIONS.md`
+
+## Logs e mensagens
+
+As mensagens, erros e prompts estão em português.
+
+## Suporte
+
+Se houver problemas de import de pacotes, verifique se o `venv` está ativado e se as dependências foram instaladas com sucesso (`pip install -r requirements.txt`).
