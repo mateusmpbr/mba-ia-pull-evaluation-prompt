@@ -23,13 +23,16 @@
 - **Prompt no LangSmith**: https://smith.langchain.com/hub/mateusmpbr/bug_to_user_story_v2
 
 - **Estatísticas no LangSmith**:
-- ![Foto das estatísticas no LangSmith](static/langsmith-stats.png)
+
+![Foto das estatísticas no LangSmith](static/langsmith-stats.png)
 
 - **Alguns traces no LangSmith**:
-- ![Foto de alguns traces no LangSmith](static/langsmith-some-traces.png)
+
+![Foto de alguns traces no LangSmith](static/langsmith-some-traces.png)
 
 - **Resultado das avaliações**:
-- ![Foto do resultado das avaliações](static/evaluations-result.png)
+
+![Foto do resultado das avaliações](static/evaluations-result.png)
 
 # Como Executar
 
